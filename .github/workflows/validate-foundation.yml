@@ -1,0 +1,54 @@
+name: Validate Foundation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Foundation Validation
+    runs-on: ubuntu-latest
+
+    env:
+      TF_IN_AUTOMATION: "true"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: 1.15.8
+
+      - name: Formatting
+        run: terraform fmt -check -recursive
+
+      - name: Root Validation
+        shell: bash
+        run: |
+          mapfile -t roots < <(
+            find platform -mindepth 1 -maxdepth 1 -type d | sort
+          )
+
+          if [ "${#roots[@]}" -eq 0 ]; then
+            echo "No Terraform root directories found under platform/*."
+            exit 0
+          fi
+
+          for root in "${roots[@]}"; do
+            if ! find "$root" -maxdepth 1 -type f -name '*.tf' | grep -q .; then
+              echo "Skipping $root because it contains no Terraform files."
+              continue
+            fi
+
+            echo "::group::${root}"
+            terraform -chdir="$root" init -backend=false -input=false
+            terraform -chdir="$root" validate
+            echo "::endgroup::"
+          done
