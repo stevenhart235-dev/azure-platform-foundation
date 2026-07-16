@@ -35,24 +35,26 @@ Does not belong here:
 - Secrets, credentials, private keys, client secrets, tenant IDs,
   subscription IDs, or local developer overrides.
 
-## Authoritative Standards
+## Architecture Authority
 
-Architecture decisions and engineering standards live in the sibling
-`azure-platform-architecture` repository. This repository references those
-standards instead of copying or redefining them.
+This repository follows a single-source-of-truth architecture.
 
-Relevant source documents include:
+Architecture decisions, accepted ADRs, engineering standards, and roadmap
+guidance are maintained in the sibling `azure-platform-architecture`
+repository.
 
-- `../azure-platform-architecture/docs/ai/assistant-guide.md`
-- `../azure-platform-architecture/docs/adr/0001-iac-engine.md`
-- `../azure-platform-architecture/docs/adr/0002-repository-separation.md`
-- `../azure-platform-architecture/docs/adr/0003-terraform-toolchain-baseline.md`
-- `../azure-platform-architecture/docs/adr/0004-remote-state-strategy.md`
-- `../azure-platform-architecture/docs/adr/0005-management-group-hierarchy.md`
-- `../azure-platform-architecture/docs/adr/0006-deployment-identity-strategy.md`
-- `../azure-platform-architecture/docs/standards/repository-standard.md`
-- `../azure-platform-architecture/docs/standards/versioning-standard.md`
-- `../azure-platform-architecture/docs/standards/engineering-validation-standard.md`
+This repository consumes those decisions rather than redefining or duplicating
+them.
+
+All architectural changes should be proposed and accepted in the architecture
+repository before implementation here.
+
+Authoritative content categories include:
+
+- AI Assistant Guide.
+- Accepted ADRs.
+- Engineering Standards.
+- Roadmap.
 
 ## Toolchain Baseline
 
@@ -100,4 +102,3 @@ Before proposing changes:
 4. Keep the pull request focused.
 5. Do not add prohibited content.
 6. Provide validation evidence appropriate to the change.
-

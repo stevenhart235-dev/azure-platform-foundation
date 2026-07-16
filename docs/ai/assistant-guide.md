@@ -23,6 +23,35 @@ Git is authoritative. Previous chat history is not required to work in this
 repository. If a chat instruction conflicts with an accepted ADR or standard,
 stop and identify the conflict instead of silently changing the architecture.
 
+## Required Startup Context
+
+Before making changes, an AI assistant must read the authoritative documents
+from the sibling `azure-platform-architecture` repository.
+
+The explicit paths in this section intentionally exist here for deterministic
+AI grounding. They should not be duplicated in the human-facing `README.md`.
+
+### AI Guidance
+
+- `../azure-platform-architecture/docs/ai/assistant-guide.md`
+
+### Accepted ADRs
+
+- `../azure-platform-architecture/docs/adr/0001-iac-engine.md`
+- `../azure-platform-architecture/docs/adr/0002-repository-separation.md`
+- `../azure-platform-architecture/docs/adr/0003-terraform-toolchain-baseline.md`
+- `../azure-platform-architecture/docs/adr/0004-remote-state-strategy.md`
+- `../azure-platform-architecture/docs/adr/0005-management-group-hierarchy.md`
+- `../azure-platform-architecture/docs/adr/0006-deployment-identity-strategy.md`
+- `../azure-platform-architecture/docs/adr/0007-enterprise-networking-strategy.md`
+- `../azure-platform-architecture/docs/adr/0008-root-deployment-repository-structure.md`
+
+### Engineering Standards
+
+- `../azure-platform-architecture/docs/standards/repository-standard.md`
+- `../azure-platform-architecture/docs/standards/versioning-standard.md`
+- `../azure-platform-architecture/docs/standards/engineering-validation-standard.md`
+
 ## Repository Responsibility
 
 Allowed future content:
@@ -190,4 +219,3 @@ recommended step. Do not modify files until the requested scope is clear.
 - [ ] Validation commands were reported accurately.
 - [ ] Blockers and deferred work were identified.
 - [ ] No commit or push was performed unless explicitly requested.
-
