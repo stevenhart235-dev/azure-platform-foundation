@@ -5,8 +5,10 @@
 Bootstrap is responsible for creating the minimum Azure resources required to
 allow the Azure Platform Framework to deploy itself.
 
-This directory is a Terraform root deployment scaffold. It intentionally does
-not create Azure resources yet.
+This root currently deploys a single Azure Resource Group. This Resource Group
+will later host the remote state storage account and other bootstrap resources.
+Additional bootstrap resources will be introduced incrementally. Bootstrap
+intentionally remains minimal.
 
 ## Future Responsibilities
 
@@ -30,22 +32,25 @@ Bootstrap does not own:
 Those concerns belong to their approved foundation or connectivity deployment
 units.
 
-## Current Scope
+## Implementation
 
-This scaffold is intentionally minimal. It includes only:
+This root currently includes:
 
 - Terraform root version constraints.
 - AzureRM provider requirement.
 - AzureRM provider configuration.
+- One local module call to the reusable Resource Group module.
+- Inputs for resource group name, location, and tags.
+- Outputs for resource group ID, name, and location.
 
 It does not include:
 
 - Backend configuration.
 - Remote state configuration.
-- Azure resources.
-- Module calls.
-- Variables.
-- Outputs.
+- Storage account resources.
+- Blob containers.
+- Diagnostics.
+- Management locks.
 - Environment configuration.
 - Workflow automation.
 
@@ -58,4 +63,3 @@ This root follows the approved platform execution baseline:
 
 Terraform is the authoritative Infrastructure as Code engine for this platform.
 OpenTofu compatibility is not part of the supported contract.
-
