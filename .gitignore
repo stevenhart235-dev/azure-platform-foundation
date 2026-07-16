@@ -1,0 +1,55 @@
+# Terraform state and plans
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.plan
+plan.out
+tfplan
+crash.log
+crash.*.log
+
+# Terraform local directories and overrides
+.terraform/
+.terraform.d/
+terraform.rc
+.terraformrc
+.azure/
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform and tool caches
+plugin-cache/
+.tflint.d/
+.terrascan/
+.tfsec/
+
+# Generated artifacts
+test-results/
+coverage/
+coverage.xml
+junit.xml
+*.sarif
+*.log
+tmp/
+temp/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Common IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Dependency lock files are intentionally not ignored.
+
