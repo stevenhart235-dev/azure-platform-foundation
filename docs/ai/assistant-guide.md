@@ -91,7 +91,7 @@ Accepted decisions that directly govern this repository:
 - ADR 0002: The platform uses separate architecture, modules, foundation, and
   connectivity repositories.
 - ADR 0003: Terraform `1.15.8` is the approved execution version, AzureRM
-  `4.80.0` is the initial release-validation and root lock version, and AzAPI
+  `4.81.0` is the initial release-validation and root lock version, and AzAPI
   is excluded until a real capability justifies it.
 - ADR 0004: Remote state uses the native Terraform `azurerm` backend with
   Azure Blob Storage, Microsoft Entra authentication, and Azure RBAC.
@@ -161,12 +161,15 @@ Accepted identity guardrails:
 
 Status snapshot as of 2026-07-16:
 
-- Repository scaffold is being established.
-- No Terraform root deployment exists yet.
+- Repository scaffold is established.
+- `platform/bootstrap` defines the first bootstrap composition slice.
+- Current bootstrap module composition:
+  - `resource-group-v0.1.0`
+  - `storage-account-v0.1.1`
+  - `storage-container-v0.1.0`
 - No backend is configured.
 - No Azure resources have been created by this repository.
-- Bootstrap implementation remains deferred until its directory structure and
-  execution model are deliberately defined.
+- Bootstrap backend configuration and state migration remain deferred.
 
 This status snapshot is contributor context, not a release certificate.
 
