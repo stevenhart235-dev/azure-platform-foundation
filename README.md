@@ -8,8 +8,15 @@ policy and governance assignments, identity and RBAC assignments, management and
 observability resources, bootstrap implementation, and foundation state
 configuration.
 
-No deployable Terraform exists in this repository yet. Current work is limited
-to repository foundation and bootstrap design.
+The first Foundation bootstrap root exists under `platform/bootstrap`. Current
+implementation is limited to composing released reusable modules for bootstrap
+state infrastructure.
+
+Current bootstrap module composition:
+
+- `resource-group-v0.1.0`
+- `storage-account-v0.1.1`
+- `storage-container-v0.1.0`
 
 ## Repository Boundary
 
@@ -64,7 +71,7 @@ OpenTofu compatibility is not part of the supported contract.
 Current accepted baseline:
 
 - Approved Terraform execution version: `1.15.8`.
-- AzureRM release-validation and initial root lock version: `4.80.0`.
+- AzureRM release-validation and initial root lock version: `4.81.0`.
 - Root deployments own provider configuration.
 - Root deployments own backend configuration.
 - Root deployments own environment values.
@@ -73,16 +80,15 @@ Current accepted baseline:
 
 ## Current Status
 
-This repository is not an implemented foundation platform.
+This repository is not a complete implemented foundation platform.
 
 Status snapshot as of 2026-07-16:
 
-- Repository scaffold is being established.
-- No Terraform root deployment exists yet.
+- Repository scaffold is established.
+- `platform/bootstrap` defines the first bootstrap composition slice.
 - No backend is configured.
 - No Azure resources have been created by this repository.
-- Bootstrap implementation remains deferred until its directory structure and
-  execution model are deliberately defined.
+- Bootstrap state migration remains deferred.
 
 ## Ownership
 
