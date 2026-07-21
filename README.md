@@ -82,13 +82,29 @@ Current accepted baseline:
 
 This repository is not a complete implemented foundation platform.
 
-Status snapshot as of 2026-07-16:
+Status snapshot as of 2026-07-20:
 
 - Repository scaffold is established.
 - `platform/bootstrap` defines the first bootstrap composition slice.
+- The first controlled Azure lab bootstrap deployment succeeded.
+- Deployed lab resources:
+  - Resource group: `rg-platform-bootstrap-lab`
+  - Storage account: `stplatformbootlab01`
+  - Private state container: `bootstrap`
+  - Region: `centralus`
+- Temporary local Terraform state is currently authoritative for bootstrap.
 - No backend is configured.
-- No Azure resources have been created by this repository.
 - Bootstrap state migration remains deferred.
+
+The initial bootstrap used a temporary public network access exception with a
+narrowly scoped IP rule so Terraform could run from a local workstation. Shared
+Key remains disabled, and AzureRM uses Microsoft Entra authentication for
+supported Storage operations. The temporary network exception must be removed
+after a suitable remote-state execution path is established.
+
+Do not delete the local bootstrap `terraform.tfstate` file before successful
+state migration. Backend configuration and migration remain separate future
+work.
 
 ## Ownership
 
