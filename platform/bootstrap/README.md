@@ -72,6 +72,24 @@ exist, a later change must add the root backend configuration and migrate
 bootstrap state to Azure Blob Storage. Local state must not be committed and
 must not remain the normal operating mode after migration.
 
+The first controlled Azure lab bootstrap deployment has completed
+successfully. Temporary local Terraform state is currently authoritative for
+bootstrap and is expected to contain:
+
+- `module.bootstrap_resource_group.azurerm_resource_group.this`
+- `module.bootstrap_state_storage_account.azurerm_storage_account.this`
+- `module.bootstrap_state_container.azurerm_storage_container.this`
+
+Do not delete the local bootstrap `terraform.tfstate` file before successful
+state migration.
+
+The deployed lab resources are:
+
+- Resource group: `rg-platform-bootstrap-lab`
+- Storage account: `stplatformbootlab01`
+- Private state container: `bootstrap`
+- Region: `centralus`
+
 ## Network Access
 
 The bootstrap state storage account keeps public network access disabled by
@@ -80,6 +98,14 @@ default through `storage_account_public_network_access_enabled = false`.
 The lab architecture allows temporary public Azure endpoint access during
 bootstrap, but this must be an explicit input configuration choice. This root
 does not silently enable public network access.
+
+The first lab bootstrap used temporary public network access with a narrowly
+scoped IP rule to permit execution from a local workstation. Shared Key remains
+disabled. The AzureRM provider uses Microsoft Entra authentication for
+supported Storage operations.
+
+This temporary network exception must be removed after a suitable remote-state
+execution path is established.
 
 ## Validation
 
@@ -108,6 +134,6 @@ OpenTofu compatibility is not part of the supported contract.
 ## Next Milestone
 
 The next bootstrap step is to execute the controlled temporary local-state
-bootstrap, then add backend configuration and migrate bootstrap state to Azure
-Blob Storage using Microsoft Entra authentication and Azure RBAC. That work is
-intentionally deferred from this composition slice.
+bootstrap follow-up: add backend configuration and migrate bootstrap state to
+Azure Blob Storage using Microsoft Entra authentication and Azure RBAC. That
+work is intentionally deferred from this composition slice.
