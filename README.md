@@ -8,9 +8,14 @@ policy and governance assignments, identity and RBAC assignments, management and
 observability resources, bootstrap implementation, and foundation state
 configuration.
 
-The first Foundation bootstrap root exists under `platform/bootstrap`. Current
-implementation is limited to composing released reusable modules for bootstrap
-state infrastructure.
+Foundation roots:
+
+- [`platform/bootstrap`](platform/bootstrap/README.md): released reusable module
+  composition for bootstrap state infrastructure.
+- [`platform/management-groups`](platform/management-groups/README.md): Foundation
+  M1, ten management groups with explicit tenant context and parent relationships.
+  This POC root uses direct resources and temporary local state. Subscription
+  placement and governance are deferred; implementation does not imply apply.
 
 Current bootstrap module composition:
 
