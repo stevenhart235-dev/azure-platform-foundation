@@ -19,6 +19,9 @@ Foundation roots:
 - [`platform/subscription-placement`](platform/subscription-placement/README.md):
   Foundation M2, isolated placement of an existing subscription using the M1
   destination output contract. M2 is deployed and validated; see its milestone.
+- [`platform/nonprod-subscription`](platform/nonprod-subscription/README.md):
+  Foundation M3, one MCA subscription and its Non-Production placement. The plan
+  was applied and verified; M3 is complete with a clean post-apply plan.
 
 Current bootstrap module composition:
 
