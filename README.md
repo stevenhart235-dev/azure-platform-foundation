@@ -15,7 +15,10 @@ Foundation roots:
 - [`platform/management-groups`](platform/management-groups/README.md): Foundation
   M1, ten management groups with explicit tenant context and parent relationships.
   This POC root uses direct resources and temporary local state. Subscription
-  placement and governance are deferred; implementation does not imply apply.
+  governance is deferred. M1 deployment evidence is recorded in its milestone.
+- [`platform/subscription-placement`](platform/subscription-placement/README.md):
+  Foundation M2, isolated placement of an existing subscription using the M1
+  destination output contract. M2 is deployed and validated; see its milestone.
 
 Current bootstrap module composition:
 
